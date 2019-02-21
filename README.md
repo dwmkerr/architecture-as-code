@@ -12,6 +12,7 @@ A project to help define architecture logically as code, and generate living, in
     * [A simple, three tier application](#a-simple-three-tier-application)
 * [Additional Requirements](#additional-requirements)
 * [Alternatives](#alternatives)
+* [Technical Design](#technical-design)
 
 <!-- vim-markdown-toc -->
 
@@ -138,3 +139,12 @@ Some additional features would would be useful:
 Current solutions which are similar in nature:
 
 - [Structurizr](https://structurizr.com/): Create diagrams based on Markdown or AsciiDoc
+
+## Technical Design
+
+1. Parser: The parser will read the yaml file, validate it for syntax and structure, then produce an in-memory model. Suggested implementation is a Node.js module which can be run in-memory to validate the structure, and load into an in-memory representation, or as a cli to vlidate from the commandline. This will allow validation to happen as part of a CI/CD process, to allow Pull Requests on the structure to be validated.
+2. Visualiser: The visualiser will use the parser to build the in-memory model, which will be rendered to an HTML5 Canvas (or perhaps in 3D). Suggested implementation is a simple HTML SPA.
+
+Other options:
+
+- A CLI to render a PNG of the diagram, potentially highlighting a 'diff' for a pull request.
