@@ -26,6 +26,7 @@ At a high level:
 2. The 'toil' of generating the diagrams and artifacts should be eliminated.
 3. The system should be simple enough to very quickly define an architecture at a high-level, then layer on details as needed.
 4. The system should allow 'multidimensional' models, allowing logical architecture to be defined, but also allow the viewer to 'dive' into lower level details, such as physical or network infrastructure if needed.
+5. The system should allow UI developers to rapidly create 'styles' for renderings, or custom renderers for typed entities.
 
 ## High-Level Requirements
 
