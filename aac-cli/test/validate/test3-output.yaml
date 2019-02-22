@@ -1,0 +1,10 @@
+# No warnings or errors...
+model:
+  title: 'Test 3'
+  author: 'Dave'
+  version: '0.0.1'
+  root:
+    id: 'root'
+    components:
+      - id: 'mobile'
+        name: 'Mobile App'

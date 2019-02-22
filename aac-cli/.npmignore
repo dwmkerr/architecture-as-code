@@ -1,0 +1,5 @@
+artifacts/
+assets/
+test/
+*.specs.js
+

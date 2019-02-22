@@ -1,0 +1,15 @@
+warnings:
+  - type: no_title
+    match: 'title'
+  - type: no_author
+    match: 'author'
+  - type: no_model
+    match: 'model'
+
+model:
+  title:
+  author:
+  version: '0.0.1'
+  root:
+    id: 'root'
+    components: []
