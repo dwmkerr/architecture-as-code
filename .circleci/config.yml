@@ -8,8 +8,8 @@ jobs:
     steps:
       - checkout
       - run: make test
-      - run: npm run cov
-      - run: bash <(curl -s https://codecov.io/bash)
+      - run: cd aac-cli; npm run cov
+      - run: cd aac-cli; bash <(curl -s https://codecov.io/bash)
 
 workflows:
   version: 2

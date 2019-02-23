@@ -18,12 +18,14 @@ function checkResults(results, expectedResults) {
   //  Check each warning.
   (expectedResults.warnings || []).forEach((expectedWarning) => {
     const warning = results.warnings.find(w => w.type === expectedWarning.type);
+    // eslint-disable-next-line
     expect(warning, `Expected warning of type ${expectedWarning.type}`).to.exist;
   });
 
   //  Check each error.
   (expectedResults.errors || []).forEach((expectedError) => {
     const error = results.errors.find(e => e.type === expectedError.type);
+    // eslint-disable-next-line
     expect(error, `Expected error of type ${expectedError.type}`).to.exist;
 
     expect(error.message).to.match(new RegExp(expectedError.match));
