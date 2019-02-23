@@ -1,14 +1,15 @@
 # Build the code, pretty trivial for a Node.js project.
 build:
-	npm install
+	cd aac-cli && npm install
 
 # Test the code. First lints, then runs the unit tests, checking coverage.
 test: build
-	npm run lint
-	npm run test
+	cd aac-cli && npm run lint
+	cd aac-cli && npm run test
 
 # Run the CircleCI build locally.
 circleci:
+	curl -fLSs https://circle.ci/cli | bash
 	circleci config validate -c .circleci/config.yml
 	circleci build --job test
 

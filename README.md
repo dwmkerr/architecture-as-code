@@ -15,6 +15,7 @@ A project to help define architecture logically as code, and generate living, in
 * [The CLI](#the-cli)
 * [API Documentation](#api-documentation)
     * [Validate](#validate)
+* [Developer Guide](#developer-guide)
 * [TODO](#todo)
 
 <!-- vim-markdown-toc -->
@@ -192,6 +193,15 @@ console.log(`${errors.length} errors`);
 console.log(`${warnings.length} warnings`);
 console.log(`Model: ${JSON.stringify(model, null, 2)}`);
 ```
+
+## Developer Guide
+
+Common tasks can be run from the `makefile`
+
+| Command       | Usage                                                        |
+|---------------|--------------------------------------------------------------|
+| `make test`   | Lint and test the code.                                      |
+| `make circle` | Install the CircleCI CLI and run the CircleCI build locally. |
 
 ## TODO
 
