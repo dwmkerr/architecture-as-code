@@ -1,5 +1,7 @@
 # architecture-as-code
 
+[![CircleCI](https://circleci.com/gh/dwmkerr/architecture-as-code.svg?style=shield)](https://circleci.com/gh/dwmkerr/architecture-as-code)
+
 A project to help define architecture logically as code, and generate living, interactive diagrams.
 
 <!-- vim-markdown-toc GFM -->
