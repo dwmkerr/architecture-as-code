@@ -1,6 +1,6 @@
 # architecture-as-code
 
-[![CircleCI](https://circleci.com/gh/dwmkerr/architecture-as-code.svg?style=shield)](https://circleci.com/gh/dwmkerr/architecture-as-code)
+[![CircleCI](https://circleci.com/gh/dwmkerr/architecture-as-code.svg?style=shield)](https://circleci.com/gh/dwmkerr/architecture-as-code) [![codecov](https://codecov.io/gh/dwmkerr/architecture-as-code/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/architecture-as-code)
 
 A project to help define architecture logically as code, and generate living, interactive diagrams.
 
