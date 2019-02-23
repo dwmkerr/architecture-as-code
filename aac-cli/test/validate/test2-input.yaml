@@ -1,0 +1,7 @@
+# Test 2
+# - assert that a missing title and author are warnings
+# - assert that no model is a warning
+
+# title: 'Test 2'
+# author: 'Dave'
+# component:

@@ -2,7 +2,6 @@
 
 A project to help define architecture logically as code, and generate living, interactive diagrams.
 
-
 <!-- vim-markdown-toc GFM -->
 
 * [Design Goals](#design-goals)
@@ -13,6 +12,10 @@ A project to help define architecture logically as code, and generate living, in
 * [Additional Requirements](#additional-requirements)
 * [Alternatives](#alternatives)
 * [Technical Design](#technical-design)
+* [The CLI](#the-cli)
+* [API Documentation](#api-documentation)
+    * [Validate](#validate)
+* [TODO](#todo)
 
 <!-- vim-markdown-toc -->
 
@@ -134,6 +137,9 @@ The resulting diagram should be rendered as something like this:
 Some additional features would would be useful:
 
 1. Creating a structure from Terraform files
+2. Creating a model from an external structure, such as AWS
+3. Layering data from an APM such as New Relic in real-time
+4. WebGL rendering
 
 ## Alternatives
 
@@ -146,6 +152,49 @@ Current solutions which are similar in nature:
 1. Parser: The parser will read the yaml file, validate it for syntax and structure, then produce an in-memory model. Suggested implementation is a Node.js module which can be run in-memory to validate the structure, and load into an in-memory representation, or as a cli to vlidate from the commandline. This will allow validation to happen as part of a CI/CD process, to allow Pull Requests on the structure to be validated.
 2. Visualiser: The visualiser will use the parser to build the in-memory model, which will be rendered to an HTML5 Canvas (or perhaps in 3D). Suggested implementation is a simple HTML SPA.
 
+```
+  model.yaml  --> validator --> warnings, errors, model.json
+  model.json  --> inflator  --> warnings, errors, model-inflated.json
+  model-inflated --> renderer --> visualisation
+```
+
 Other options:
 
 - A CLI to render a PNG of the diagram, potentially highlighting a 'diff' for a pull request.
+
+## The CLI
+
+Some ideas for the CLI interface:
+
+```
+aac validate # validate a model
+aac render   # render a model
+aac import   # create a model from an external structure
+aac diff     # compare models, or a model to an external structure
+```
+
+- Consider yargs rather than commander
+- Consider inquirer for cli guidance
+
+## API Documentation
+
+The key APIs are documented below.
+
+### Validate
+
+Validates the structure of a model YAML, and returns the in-memory representation of the model:
+
+```js
+const modelYaml = fs.readFileSync('model.yaml', 'utf8');
+const { model, errors, warnings } = validate({ modelYaml });
+
+console.log(`${errors.length} errors`);
+console.log(`${warnings.length} warnings`);
+console.log(`Model: ${JSON.stringify(model, null, 2)}`);
+```
+
+## TODO
+
+- [ ] `aac ./some/file.yaml` shows no output - it should demand a command
+- [ ] `meta` field on anything, just key value pairs. Use it as a 'dumping ground' (e.g. `platform: as400`) when building models, until you find a structured location for it. When rendered, available as a tooltip.
+- [ ] styling should be handled with a separate css file, which can use classes, selectors etc. Regardless of whether the renderer is HTML, CSS provides a known framework for styling.

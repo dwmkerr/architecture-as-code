@@ -1,0 +1,5 @@
+node_modules/
+artifacts/
+npm-debug.log
+.nyc_output/
+Thumbs.db

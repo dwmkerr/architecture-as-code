@@ -1,0 +1,8 @@
+errors:
+  - type: invalid_yaml
+    # The yaml is missing a closing brace...
+    match: 'unexpected end of the stream'
+warnings:
+
+# Null model...
+model:

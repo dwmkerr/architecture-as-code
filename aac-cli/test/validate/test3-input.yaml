@@ -1,0 +1,10 @@
+# Test 3
+# - assert a simple model can load
+
+title: 'Test 3'
+author: 'Dave'
+
+components:
+  - id: 'mobile'
+    name: 'Mobile App'
+
