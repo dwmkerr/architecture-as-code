@@ -1,0 +1,15 @@
+<h1>{{ model.model.title }}</h1>
+<p>Author: {{ model.model.author }}</p>
+
+<h2>Warnings</h2>
+{{#each model.warnings}}
+  <p>{{@index}}. {{this.message}}</p>
+{{/each}}
+
+<h2>Errors</h2>
+{{#each model.errors}}
+  <p>{{@index}}. {{this.message}}</p>
+{{/each}}
+
+<h2>Raw</h2>
+<pre>{{{ raw }}}</pre>
