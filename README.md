@@ -11,7 +11,8 @@ A project to help define architecture logically as code, and generate living, in
 * [Technical Notes](#technical-notes)
 * [Examples](#examples)
     * [A simple, three tier application](#a-simple-three-tier-application)
-* [Additional Requirements](#additional-requirements)
+* [Other Ideas](#other-ideas)
+    * [Policy Enforcing](#policy-enforcing)
 * [Alternatives](#alternatives)
 * [Technical Design](#technical-design)
 * [The CLI](#the-cli)
@@ -135,7 +136,7 @@ The resulting diagram should be rendered as something like this:
 
 ![Example 1: Diagram](./images/example1.jpg)
 
-## Additional Requirements
+## Other Ideas
 
 Some additional features would would be useful:
 
@@ -143,6 +144,10 @@ Some additional features would would be useful:
 2. Creating a model from an external structure, such as AWS
 3. Layering data from an APM such as New Relic in real-time
 4. WebGL rendering
+
+### Policy Enforcing
+
+Enforce policies. Go to AWS, highlight any resource which is not part of an architecture schema. Allows existing environments to be audited, e.g show me resources which don’t fit into my defined architecture. This is potentially quite a useful feature, allowing an existing cloud set up to be audited against a well defined architectural spec.
 
 ## Alternatives
 
