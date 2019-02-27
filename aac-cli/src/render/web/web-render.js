@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const debug = require('debug')('aac');
 const exphbs = require('express-handlebars');
+const htmlRender = require('./html-render');
 
 module.exports = function webRender({ model, options }) {
   const viewsDir = path.join(__dirname, 'views');
@@ -26,10 +27,14 @@ module.exports = function webRender({ model, options }) {
 
   console.log(JSON.stringify(model, null, 2));
 
+  //  Render the model into HTML.
+  const modelHTML = htmlRender(model.model.root);
+
   app.get('/', (req, res) => {
     res.render('index', {
       model,
       raw: JSON.stringify(model.model, null, 2),
+      modelHTML,
     });
   });
 

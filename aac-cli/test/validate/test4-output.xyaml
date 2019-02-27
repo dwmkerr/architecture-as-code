@@ -1,0 +1,14 @@
+# No warnings or errors...
+model:
+  title: 'Test 4'
+  author: 'Dave'
+  version: '0.0.1'
+  root:
+    id: 'root'
+    components:
+      - id: 'mobile'
+        name: 'Mobile App (iOS)'
+      - id: 'component_1'
+        name: 'Mobile App (Android)'
+      - id: 'component_2'
+        name: 'Website'

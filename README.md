@@ -216,3 +216,4 @@ Common tasks can be run from the `makefile`
 - [ ] `meta` field on anything, just key value pairs. Use it as a 'dumping ground' (e.g. `platform: as400`) when building models, until you find a structured location for it. When rendered, available as a tooltip.
 - [ ] styling should be handled with a separate css file, which can use classes, selectors etc. Regardless of whether the renderer is HTML, CSS provides a known framework for styling.
 - [ ] `aac demo` - creates a three-tier architecture, renders and watches it, with an informative message. One command to show all the good stuff.
+- [ ] `validate` should give a unique id to all elements
