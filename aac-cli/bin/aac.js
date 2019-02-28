@@ -55,9 +55,9 @@ require('yargs') // eslint-disable-line
     console.log(`\nRendering ${chalk.green(model)} with ${chalk.green(engine)}...\n`);
 
     const modelData = fs.readFileSync(model, 'utf8');
-    const results = await validate({ model: modelData });
+    const compilerOutput = await validate({ model: modelData });
 
-    await render({ engine, model: results, options: {} });
+    await render({ engine, compilerOutput, options: {} });
   })
   .option('verbose', {
     alias: 'v',

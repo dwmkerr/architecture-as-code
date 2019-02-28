@@ -1,6 +1,27 @@
 const yaml = require('js-yaml');
 const pack = require('../../package.json');
 
+/**
+ * componentToEntity - returns a model component as a compiled entity.
+ *
+ * @param compiledModel - the current compiled model
+ * @param component - the component
+ * @returns a compiled component entity
+ */
+function componentToEntity(componentIdGenerator, component) {
+  //  TODO: would this be better named 'compileComponent'?
+  //  Get the ID. If we don't have one, create a new one.
+  const id = component.id || `${componentIdGenerator()}`;
+
+  //  Return a 'component' entity.
+  return {
+    id,
+    type: 'component',
+    name: component.name,
+  };
+}
+
+//  TODO: this is now essentially 'ciompile' rather than 'validate'.
 module.exports = async function validate({ model }) {
   //  Validate and coerce the parameters.
   if (!model) throw new Error('\'model\' is a required parameter');
@@ -8,7 +29,8 @@ module.exports = async function validate({ model }) {
   const results = {
     warnings: [],
     errors: [],
-    model: null,
+    compiledModel: {
+    },
   };
 
   //  Load the model. TODO: it should be modelPath?
@@ -27,20 +49,32 @@ module.exports = async function validate({ model }) {
   if (!input.author) results.warnings.push({ type: 'no_author', message: 'No author has been specified' });
   if (!input.components && !input.containers && !input.connections) results.warnings.push({ type: 'no_model', message: 'No model (components, containers, connections) has been specified' });
 
+  //  While compiling, we may need to generate component ids. This is the function
+  //  which does that.
+  //  TODO: There is nothing stopping us clashing with a user-defined id...
+  let nextComponentId = 1;
+  const generateComponentId = () => {
+    const id = `component_${nextComponentId}`;
+    nextComponentId += 1; // urgh
+    return id;
+  };
+
   //  We can now create the initial model, which should have a root container.
-  results.model = {
+  results.compiledModel = {
     title: input.title || null,
     author: input.author || null,
     version: pack.version,
     root: {
       id: 'root',
-      components: [],
+      type: 'container',
+      children: [],
     },
   };
 
   //  Grab any 'loose' components and put them in the root.
   (input.components || []).forEach((looseComponent) => {
-    results.model.root.components.push(looseComponent);
+    const entity = componentToEntity(generateComponentId, looseComponent);
+    results.compiledModel.root.children.push(entity);
   });
 
   return results;

@@ -1,14 +1,18 @@
 # No warnings or errors...
-model:
+compiledModel:
   title: 'Test 4'
   author: 'Dave'
   version: '0.0.1'
   root:
     id: 'root'
-    components:
+    type: 'container'
+    children:
       - id: 'mobile'
+        type: 'component'
         name: 'Mobile App (iOS)'
       - id: 'component_1'
+        type: 'component'
         name: 'Mobile App (Android)'
       - id: 'component_2'
+        type: 'component'
         name: 'Website'

@@ -1,8 +1,8 @@
-function render(container, level = 0) {
-  const { id, name } = container;
-  const children = container.components || [];
+function render(entity, level = 0) {
+  const { id, name } = entity;
+  const children = entity.children || [];
 
-  const classes = `${container.type} model-container`;
+  const classes = `model-entity model-${entity.type}`;
   const indent = '  '.repeat(level);
   const tagOpen = `${indent}<div id="${id}" class="${classes}">`;
   const tagHeading = `${indent}  <p>${name}</p>`;
@@ -12,7 +12,6 @@ function render(container, level = 0) {
   return `${tagOpen}\n${tagHeading}\n${tagContents}\n${tagClose}`;
 }
 
-module.exports = function htmlRender(container) {
-  //  Traverse the model, via the root, writing out the HTML.
-  return render(container);
+module.exports = function htmlRender(entity) {
+  return render(entity);
 };

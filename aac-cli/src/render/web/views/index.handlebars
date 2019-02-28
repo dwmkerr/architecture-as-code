@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid">
     <!-- The title and heading area. -->
     <div class="row">
         <div class="col-md-122">
-            <h1>{{ model.model.title }}</h1>
-            <p>Author: {{ model.model.author }}</p>
+            <h1>{{ compiledModel.title }}</h1>
+            <p>Author: {{ compiledModel.author }}</p>
         </div>
     </div>
 
@@ -15,12 +15,12 @@
             <pre>{{{ raw }}}</pre>
 
             <h2>Warnings</h2>
-            {{#each model.warnings}}
+            {{#each warnings}}
               <p>{{@index}}. {{this.message}}</p>
             {{/each}}
 
             <h2>Errors</h2>
-            {{#each model.errors}}
+            {{#each errors}}
               <p>{{@index}}. {{this.message}}</p>
             {{/each}}
         </div>   

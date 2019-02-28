@@ -1,4 +1,28 @@
+/* All entities */
 .model-container {
+    background-color: #4444FF22;
+    padding: 12px;
+    border-radius: 6px;
+    border-color: #4444FF;
+    border-style: solid;
+}
+
+/* Container entities. */
+.model-container {
+    background-color: #4444FF22;
+    padding: 12px;
+    border-radius: 6px;
+    border-color: #4444FF;
+    border-style: solid;
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* Compontent entities. */
+.model-component {
     background-color: #4444FF22;
     padding: 12px;
     border-radius: 6px;
