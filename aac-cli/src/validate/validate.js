@@ -4,20 +4,40 @@ const pack = require('../../package.json');
 /**
  * componentToEntity - returns a model component as a compiled entity.
  *
- * @param compiledModel - the current compiled model
+ * @param idGenerator - a function which returns a unique entity id
  * @param component - the component
  * @returns a compiled component entity
  */
-function componentToEntity(componentIdGenerator, component) {
+function componentToEntity(idGenerator, component) {
   //  TODO: would this be better named 'compileComponent'?
   //  Get the ID. If we don't have one, create a new one.
-  const id = component.id || `${componentIdGenerator()}`;
+  const id = component.id || `${idGenerator()}`;
 
   //  Return a 'component' entity.
   return {
     id,
     type: 'component',
     name: component.name,
+  };
+}
+
+/**
+ * containerToEntity - returns a model container as a compiled entity.
+ *
+ * @param idGenerator - a function which returns a unique entity id
+ * @param container - the container
+ * @returns a compiled container entity
+ */
+function containerToEntity(idGenerator, container) {
+  //  Get the ID. If we don't have one, create a new one.
+  const id = container.id || `${idGenerator()}`;
+
+  //  Return a 'component' entity.
+  return {
+    id,
+    type: 'container',
+    name: container.name,
+    children: (container.components || []).map(c => componentToEntity(idGenerator, c)),
   };
 }
 
@@ -52,10 +72,10 @@ module.exports = async function validate({ model }) {
   //  While compiling, we may need to generate component ids. This is the function
   //  which does that.
   //  TODO: There is nothing stopping us clashing with a user-defined id...
-  let nextComponentId = 1;
-  const generateComponentId = () => {
-    const id = `component_${nextComponentId}`;
-    nextComponentId += 1; // urgh
+  let nextEntityId = 1;
+  const generateEntityId = () => {
+    const id = `entity_${nextEntityId}`;
+    nextEntityId += 1; // urgh
     return id;
   };
 
@@ -73,7 +93,13 @@ module.exports = async function validate({ model }) {
 
   //  Grab any 'loose' components and put them in the root.
   (input.components || []).forEach((looseComponent) => {
-    const entity = componentToEntity(generateComponentId, looseComponent);
+    const entity = componentToEntity(generateEntityId, looseComponent);
+    results.compiledModel.root.children.push(entity);
+  });
+
+  //  Grab any 'loose' containers and put them in the root.
+  (input.containers || []).forEach((looseContainer) => {
+    const entity = containerToEntity(generateEntityId, looseContainer);
     results.compiledModel.root.children.push(entity);
   });
 

@@ -1,0 +1,31 @@
+# No warnings or errors...
+
+# The compiled model.
+compiledModel:
+  title: 'Test Three Tier Application Architecture'
+  author: 'dwmkerr'
+  version: '0.0.1'
+  root:
+    id: 'root'
+    type: 'container'
+    children:
+    - id: 'Channels'
+      type: 'container'
+      name: 'Digital Channels'
+      children:
+      - id: 'mobile_ios'
+        type: 'component'
+        name: 'Mobile App (iOS)'
+      - id: 'mobile_android'
+        type: 'component'
+        name: 'Mobile App (Android)'
+      - id: 'web'
+        type: 'component'
+        name: 'Website'
+    - id: 'Integration'
+      type: 'container'
+      name: 'Integration'
+      children:
+      - id: 'gateway'
+        type: 'component'
+        name: 'API Gateway'
