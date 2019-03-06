@@ -31,8 +31,8 @@ function checkResults(results, expectedResults) {
     expect(error.message).to.match(new RegExp(expectedError.match));
   });
 
-  //  Check the model.
-  expect(results.model).to.deep.equal(expectedResults.model);
+  //  Check the compiled model.
+  expect(results.compiledModel).to.deep.equal(expectedResults.compiledModel);
 }
 
 describe('validate - functional tests', () => {

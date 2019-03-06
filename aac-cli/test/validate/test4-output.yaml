@@ -1,0 +1,18 @@
+# No warnings or errors...
+compiledModel:
+  title: 'Test 4'
+  author: 'Dave'
+  version: '0.0.1'
+  root:
+    id: 'root'
+    type: 'container'
+    children:
+      - id: 'mobile'
+        type: 'component'
+        name: 'Mobile App (iOS)'
+      - id: 'entity_1'
+        type: 'component'
+        name: 'Mobile App (Android)'
+      - id: 'entity_2'
+        type: 'component'
+        name: 'Website'

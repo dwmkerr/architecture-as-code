@@ -1,0 +1,12 @@
+# Test 4
+# - Assert that components are given ids, if they are not explicitly specified.
+
+title: 'Test 4'
+author: 'Dave'
+
+components:
+  - id: 'mobile'
+    name: 'Mobile App (iOS)'
+  - name: 'Mobile App (Android)'
+  - name: 'Website'
+

@@ -7,6 +7,7 @@
 const fs = require('fs');
 const chalk = require('chalk');
 const validate = require('../src/validate/validate');
+const render = require('../src/render/render');
 
 require('yargs') // eslint-disable-line
   .command('validate [model]', 'validate a model', (yargs) => {
@@ -37,37 +38,26 @@ require('yargs') // eslint-disable-line
 
     console.log(`\n${warnings} warning(s), ${errors} error(s)`);
   })
-  .command('render [renderer] [model]', 'render a model', (yargs) => {
+  .command('render [engine] [model]', 'render a model', (yargs) => {
     yargs
-      .positional('renderer', {
-        describe: 'renderer type',
+      .positional('engine', {
+        describe: 'engine type',
         default: 'web',
       })
       .positional('model', {
         describe: 'path to architecture model',
       })
       .demandOption(['model']);
-  }, async ({ renderer, model, verbose }) => {
+  }, async ({ engine, model, verbose }) => {
     if (verbose) {
-      console.log(`render architecture model: ${model}, with renderer ${renderer}`);
+      console.log(`render architecture model: ${model}, with engine ${engine}`);
     }
-    console.log(`\nRendering ${chalk.green(model)} with ${chalk.green(renderer)}...\n`);
+    console.log(`\nRendering ${chalk.green(model)} with ${chalk.green(engine)}...\n`);
 
     const modelData = fs.readFileSync(model, 'utf8');
-    const results = await validate({ model: modelData });
+    const compilerOutput = await validate({ model: modelData });
 
-    //  Write each error and warning.
-    results.warnings.forEach((w) => { console.log(`  ${chalk.yellow('Warning')}: ${w.message}`); });
-    results.errors.forEach((e) => { console.log(`  ${chalk.red('Error')}: ${e.message}`); });
-
-    const warnings = results.warnings.length > 0
-      ? chalk.yellow(results.warnings.length)
-      : chalk.green(results.warnings.length);
-    const errors = results.errors.length > 0
-      ? chalk.red(results.errors.length)
-      : chalk.green(results.errors.length);
-
-    console.log(`\n${warnings} warning(s), ${errors} error(s)`);
+    await render({ engine, compilerOutput, options: {} });
   })
   .option('verbose', {
     alias: 'v',

@@ -11,9 +11,11 @@ A project to help define architecture logically as code, and generate living, in
 * [Technical Notes](#technical-notes)
 * [Examples](#examples)
     * [A simple, three tier application](#a-simple-three-tier-application)
-* [Additional Requirements](#additional-requirements)
+* [Other Ideas](#other-ideas)
+    * [Policy Enforcing](#policy-enforcing)
 * [Alternatives](#alternatives)
 * [Technical Design](#technical-design)
+    * [Model Compilation](#model-compilation)
 * [The CLI](#the-cli)
 * [API Documentation](#api-documentation)
     * [Validate](#validate)
@@ -135,7 +137,7 @@ The resulting diagram should be rendered as something like this:
 
 ![Example 1: Diagram](./images/example1.jpg)
 
-## Additional Requirements
+## Other Ideas
 
 Some additional features would would be useful:
 
@@ -143,6 +145,10 @@ Some additional features would would be useful:
 2. Creating a model from an external structure, such as AWS
 3. Layering data from an APM such as New Relic in real-time
 4. WebGL rendering
+
+### Policy Enforcing
+
+Enforce policies. Go to AWS, highlight any resource which is not part of an architecture schema. Allows existing environments to be audited, e.g show me resources which don’t fit into my defined architecture. This is potentially quite a useful feature, allowing an existing cloud set up to be audited against a well defined architectural spec.
 
 ## Alternatives
 
@@ -164,6 +170,20 @@ Current solutions which are similar in nature:
 Other options:
 
 - A CLI to render a PNG of the diagram, potentially highlighting a 'diff' for a pull request.
+
+### Model Compilation
+
+A model is simply the `yaml` representation of an architecture. This representation is designed to be as easy as possible to be created and maintained by a human. Therefore, we want to provide a simple, declarative schema to define architectures.
+
+However, to *render* a model, we must first build an intermediate structure, which is the 'compiled model'. The reason that the model must be compiled is that there are elements of a model which do not have to be defined in the `yaml`, but which are still required to be rendered. This compiled model is built with the `compile` function. The compiler will:
+
+1. Validate that the model is syntactically and semantically correct
+2. Assign an `id` to every entity which does not have one explicitly defined
+3. Build a graph of entities, starting from an artificial `root` entity
+
+The following features of the compiler are not yet completed:
+
+1. Link entities together, for ease of traversal (e.g. child entities have a `parent` reference, parent entities have a `children` reference. NOTE: This brings in a small challenge which is that the compiled model cannot be serialized as a POJO, due to potential circular references. One simple approach to deal with this would be to unlink the model by replacing `parent` with `parentId`, `children` with `childrenIds` and so on. This would be straightforward to read in the serialized compiled model, and straightforward to re-link after loading the model.
 
 ## The CLI
 
@@ -211,3 +231,4 @@ Common tasks can be run from the `makefile`
 - [ ] `meta` field on anything, just key value pairs. Use it as a 'dumping ground' (e.g. `platform: as400`) when building models, until you find a structured location for it. When rendered, available as a tooltip.
 - [ ] styling should be handled with a separate css file, which can use classes, selectors etc. Regardless of whether the renderer is HTML, CSS provides a known framework for styling.
 - [ ] `aac demo` - creates a three-tier architecture, renders and watches it, with an informative message. One command to show all the good stuff.
+- [ ] `validate` should give a unique id to all elements

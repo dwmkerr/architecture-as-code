@@ -6,10 +6,11 @@ warnings:
   - type: no_model
     match: 'model'
 
-model:
+compiledModel:
   title:
   author:
   version: '0.0.1'
   root:
     id: 'root'
-    components: []
+    type: 'container'
+    children: []

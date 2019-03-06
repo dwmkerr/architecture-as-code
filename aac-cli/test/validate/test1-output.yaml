@@ -4,5 +4,5 @@ errors:
     match: 'unexpected end of the stream'
 warnings:
 
-# Null model...
-model:
+# Empty compiled model...
+compiledModel: {}

@@ -1,0 +1,51 @@
+/* All entities */
+.model-entity {
+    background-color: #4444FF22;
+    padding: 12px;
+    border-radius: 6px;
+    border-color: #4444FF;
+    border-style: solid;
+}
+
+/* Container entities. */
+.model-container {
+    background-color: #4444FF22;
+    padding: 12px;
+    border-radius: 6px;
+    border-color: #8888FFCC;
+    border-style: dashed;
+
+    margin: 12px;
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* Compontent entities. */
+.model-component {
+    background-color: #4444FF22;
+    padding: 12px;
+    border-radius: 6px;
+    border-color: #4444FF;
+    border-style: solid;
+
+    /* Components are all the same size in their parent container... */
+    flex-grow: 1;
+
+    margin: 12px;
+}
+
+/* The root - always from top to bottom. */
+#root {
+    background-color: transparent;
+    padding: 12px;
+    border-radius: 0px;
+    border-color: #8888FFCC;
+    border-style: dashed;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

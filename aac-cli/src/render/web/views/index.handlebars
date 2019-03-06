@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <!-- The title and heading area. -->
+    <div class="row">
+        <div class="col-md-122">
+            <h1>{{ compiledModel.title }}</h1>
+            <p>Author: {{ compiledModel.author }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+     
+        <!-- The model text and warnings. -->
+        <div class="col-md-6">
+            <h2>Raw</h2>
+            <pre>{{{ raw }}}</pre>
+
+            <h2>Warnings</h2>
+            {{#each warnings}}
+              <p>{{@index}}. {{this.message}}</p>
+            {{/each}}
+
+            <h2>Errors</h2>
+            {{#each errors}}
+              <p>{{@index}}. {{this.message}}</p>
+            {{/each}}
+        </div>   
+
+        <!-- The rendered model. -->
+        <div class="col-md-6">
+            {{{modelHTML}}}
+        </div>
+
+    </div>
+
+</div>
