@@ -4,7 +4,7 @@
 
 A project to help define architecture logically as code, and generate living, interactive diagrams.
 
-Run `npx aac demo` to quickly see this project in action!
+Run `npx aac-cli demo` to quickly see this project in action!
 
 <!-- vim-markdown-toc GFM -->
 
@@ -23,6 +23,7 @@ Run `npx aac demo` to quickly see this project in action!
 * [API Documentation](#api-documentation)
     * [Validate](#validate)
 * [Developer Guide](#developer-guide)
+* [Creating a Release](#creating-a-release)
 * [TODO](#todo)
 
 <!-- vim-markdown-toc -->
@@ -34,7 +35,7 @@ We define infrastructure as code, configuration as code, and more - but what abo
 To quickly demo this project, just run:
 
 ```sh
-npx aac demo
+npx aac-cli demo
 ```
 
 ## Design Goals
@@ -237,6 +238,15 @@ Common tasks can be run from the `makefile`
 |---------------|--------------------------------------------------------------|
 | `make test`   | Lint and test the code.                                      |
 | `make circle` | Install the CircleCI CLI and run the CircleCI build locally. |
+
+## Creating a Release
+
+To create a release:
+
+```sh
+cd aac-cli
+npm run release && git push --follow-tags && npm publish
+```
 
 ## TODO
 

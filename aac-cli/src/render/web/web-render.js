@@ -8,7 +8,6 @@ module.exports = function webRender({ compilerOutput, options }) {
   //  Decompose the compiler ouput.
   const { warnings, errors, compiledModel } = compilerOutput;
   debug(`Preparing to render with options: ${options}`);
-  console.log(JSON.stringify(compilerOutput, null, 2));
 
   const viewsDir = path.join(__dirname, 'views');
   const app = express();

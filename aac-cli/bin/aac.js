@@ -4,12 +4,21 @@
 // eslint-disable-next-line
 'use strict';
 
-const fs = require('fs');
 const chalk = require('chalk');
+const fs = require('fs');
+const opn = require('opn');
+const path = require('path');
 const validate = require('../src/validate/validate');
 const render = require('../src/render/render');
 
 require('yargs') // eslint-disable-line
+  .command('demo', 'quickly demo the project', () => {
+  }, async () => {
+    const modelData = fs.readFileSync(path.join(__dirname, '../src/demo/demo.yaml'), 'utf8');
+    const compilerOutput = await validate({ model: modelData });
+    await render({ engine: 'web', compilerOutput, options: {} });
+    opn('http://localhost:3000');
+  })
   .command('validate [model]', 'validate a model', (yargs) => {
     yargs
       .positional('model', {
