@@ -1,5 +1,5 @@
 {
-  "name": "aac",
+  "name": "aac-cli",
   "version": "0.1.0",
   "description": "Architecture-As-Code Module & Command Line Interface",
   "main": "./src/index.js",

@@ -4,8 +4,11 @@
 
 A project to help define architecture logically as code, and generate living, interactive diagrams.
 
+Run `npx aac demo` to quickly see this project in action!
+
 <!-- vim-markdown-toc GFM -->
 
+* [Introduction](#introduction)
 * [Design Goals](#design-goals)
 * [High-Level Requirements](#high-level-requirements)
 * [Technical Notes](#technical-notes)
@@ -23,6 +26,16 @@ A project to help define architecture logically as code, and generate living, in
 * [TODO](#todo)
 
 <!-- vim-markdown-toc -->
+
+## Introduction
+
+We define infrastructure as code, configuration as code, and more - but what about architecture? The goal of this project is to allow teams to collaborate on architecture as code, and build up-to-date, interactive diagrams from existing systems or assets.
+
+To quickly demo this project, just run:
+
+```sh
+npx aac demo
+```
 
 ## Design Goals
 
