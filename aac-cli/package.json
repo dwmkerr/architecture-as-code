@@ -1,6 +1,6 @@
 {
   "name": "aac",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Architecture-As-Code Module & Command Line Interface",
   "main": "./src/index.js",
   "bin": {
