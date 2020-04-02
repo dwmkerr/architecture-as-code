@@ -1,0 +1,19 @@
+title: 'Three Tier Application Architecture'
+author: 'dwmkerr'
+
+containers:
+- id: 'Channels'
+  name: 'Digital Channels'
+  components:
+  - id: 'mobile_ios'
+    name: 'Mobile App (iOS)'
+  - id: 'mobile_android'
+    name: 'Mobile App (Android)'
+  - id: 'web'
+    name: 'Website'
+
+- id: 'Integration'
+  name: 'Integration'
+  components:
+  - id: 'gateway'
+    name: 'API Gateway'
