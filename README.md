@@ -169,6 +169,8 @@ Enforce policies. Go to AWS, highlight any resource which is not part of an arch
 Current solutions which are similar in nature:
 
 - [Structurizr](https://structurizr.com/): Create diagrams based on Markdown or AsciiDoc
+- [Mingrammer](https://diagrams.mingrammer.com): Very cool, uses Python as the syntax
+- [PlantUML](): Old school visuals but supports flow diagrams etc
 
 ## Technical Design
 
