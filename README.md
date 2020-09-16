@@ -171,6 +171,7 @@ Current solutions which are similar in nature:
 - [Structurizr](https://structurizr.com/): Create diagrams based on Markdown or AsciiDoc
 - [Mingrammer](https://diagrams.mingrammer.com): Very cool, uses Python as the syntax
 - [PlantUML](): Old school visuals but supports flow diagrams etc
+- [Mermaid](http://mermaid-js.github.io/mermaid/): Gantts, flowcharts, diagrams in a simple text format
 
 ## Technical Design
 
